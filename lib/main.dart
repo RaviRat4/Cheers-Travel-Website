@@ -52,9 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.grey[200],
                 child: const Center(child: Text("Page Content")),
               ),
-              const HelpSection(), // ✅ Use const if it's a StatelessWidget
-              // FooterCtaSection(),
-              // FooterSection(),
+               HelpSection(),
+              FooterSection(),
             ],
           ),
         ),

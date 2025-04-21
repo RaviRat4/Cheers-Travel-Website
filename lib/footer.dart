@@ -6,163 +6,175 @@ class FooterSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-          child: Wrap(
-            runSpacing: 20,
-            spacing: 20,
-            alignment: WrapAlignment.spaceBetween,
-            children: [
-              // Logo + Description
-              SizedBox(
-                width: 300,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset('assets/images/cheers-logo.png', height: 60),
-                    const SizedBox(height: 10),
-                    const Text(
-                      "Cheers Travel stands as one of the largest retail & online travel agencies. We have our Head office in Murray Bridge, Adelaide , South Australia, and our contact centre in India.",
-                      style: TextStyle(height: 1.6, fontSize: 13, color: Color(0xff5d6f7d)),
-                    ),
-                    const SizedBox(height: 6),
-                    GestureDetector(
-                      onTap: () => Navigator.pushNamed(context, '/aboutus'),
-                      child: const Text(
-                        "Know More >>",
-                        style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 13),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+    return Container(
+      color: const Color(0xFF142957),
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+     child: Center(
+       child: Container(
+         width: 1200,
+         child: Column(
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: [
+             // Top Columns
+             Row(
+               crossAxisAlignment: CrossAxisAlignment.start,
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               children: [
+                 _buildColumn('Who We are', {
+                   'Home': '/',
+                   'About Us': '/',
+                   'Contact Us': '/',
+                   'Faq': '/',
+                 }),
+                 _buildColumn('Destinations', {
+                   'Brisbane': '/',
+                   'Ballina': '/',
+                   'Gold Coast': '/',
+                   'Melbourne': '/',
+                   'Sydney': '/',
+                 }),
+                 _buildColumn('Support', {
+                   'Privacy Policy': '/',
+                   'Terms and Conditions': '/',
+                   'Website Terms of Use': '/',
+                   'Customer Support': '/',
+                 }),
+                 _buildLoginSection(),
+               ],
+             ),
+             const SizedBox(height: 40),
+             // Payment Icons
+             Center(
+               child: Container(
+                 width: 1200,
+                 padding: EdgeInsets.all(10),
+                 decoration: BoxDecoration(
+                   color: Colors.white12, // ← Transparent background
+                   borderRadius: BorderRadius.circular(4),
+                 ),
+                 child: Center(
+                   child: Image.asset(
+                     'assets/images/payment.png', // Add your image to assets folder
+                     height: 50,
+                   ),
+                 ),
+               ),
+             ),
+             const SizedBox(height: 5),
+             // Partner Logos
+             Center(
+               child: Wrap(
+                 alignment: WrapAlignment.center,
+                 children: [
+                   Image.asset(
+                     'assets/images/partnerlogo.png', // Add your image to assets folder
+                     height: 56,
+                   ),
 
-              // Menu Sections
-              footerMenu(context, "Who We are", {
-                "Home": "/",
-                "About Us": "/",
-                "Contact Us": "/",
-                "Faq": "/faq",
-              }),
-
-              footerMenu(context, "Destinations", {
-                "Brisbane": "/",
-                "Ballina": "/",
-                "Gold Coast": "/",
-                "Melbourne": "/",
-                "Sydney": "/",
-              }),
-
-              footerMenu(context, "Support", {
-                "Privacy Policy": "/",
-                "Terms and Conditions": "/",
-                "Website Terms of Use": "/",
-                "Customer Support": "/",
-              }),
-
-              // Payment & Partners
-              SizedBox(
-                width: 240,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("We Accept", style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff003a75), fontSize: 15)),
-                    const SizedBox(height: 10),
-                    Image.asset('assets/images/payment.png', height: 32),
-
-                    const SizedBox(height: 20),
-                    const Text("Our Partners", style: TextStyle(color: Color(0xff455873), fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 10),
-                    Image.asset('assets/images/partnerLogo.jpg', height: 72),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        // Bottom Bar
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-          decoration: const BoxDecoration(
-            border: Border(top: BorderSide(color: Colors.grey, width: 0.3)),
-          ),
-          child: Center(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width * 0.8,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Flexible(
-                    child: Text(
-                      "© Copyright 2025, Cheers Travel All Rights Reserved.",
-                      style: TextStyle(color: Color(0xff5d6f7d), fontSize: 13),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  Wrap(
-                    spacing: 20,
-                    children: [
-                      linkText(context, "Terms and Conditions", "/"),
-                      linkText(context, "Privacy Policy", "/"),
-                      linkText(context, "Customer Support", "/"),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
+                 ],
+               ),
+             ),
+             const SizedBox(height: 5),
+             // Company Info
+             const Center(
+               child: Text(
+                 'Cheers Travel Partners is an Australian based company. PO Box 5026 Murray Bridge South 5253 Australia.',
+                 style: TextStyle(color: Colors.white, fontSize: 12),
+                 textAlign: TextAlign.center,
+               ),
+             ),
+             const SizedBox(height: 10),
+             const Center(
+               child: Text(
+                 '© Copyright 2025, Cheers Travel All Rights Reserved.',
+                 style: TextStyle(color: Colors.white, fontSize: 12),
+                 textAlign: TextAlign.center,
+               ),
+             ),
+           ],
+         ),
+       ),
+     ),
     );
   }
 
-  Widget footerMenu(BuildContext context, String title, Map<String, String> items) {
-    return SizedBox(
-      width: 190,
+  Widget _buildColumn(String title, Map<String, String> items) {
+    return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xff003a75), fontSize: 15)),
-          const SizedBox(height: 20),
-          for (var entry in items.entries)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, entry.value),
+          Text(
+            title,
+            style: const TextStyle(
+                fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 12),
+          ...items.entries.map(
+                (entry) => Padding(
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: InkWell(
+                onTap: () => _launchURL(entry.value),
                 child: Text(
                   entry.key,
                   style: const TextStyle(
-                    color: Color(0xff47525c),
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Colors.white,
                   ),
                 ),
               ),
             ),
+          ),
         ],
       ),
     );
   }
 
-  Widget linkText(BuildContext context, String label, String route) {
-    return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, route),
-      child: Text(
-        label,
-        style: const TextStyle(
-          color: Color(0xff022f5d),
-          fontWeight: FontWeight.bold,
-          fontSize: 12,
-          decoration: TextDecoration.none,
-        ),
+  Widget _buildLoginSection() {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Log in',
+            style: TextStyle(
+                fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 12),
+          InkWell(
+            onTap: () => _launchURL('/'),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white60),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Icon(Icons.person_outline, color: Colors.white),
+                  SizedBox(width: 8),
+                  Text(
+                    'My Bookings',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
+  }
+
+  void _launchURL(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
