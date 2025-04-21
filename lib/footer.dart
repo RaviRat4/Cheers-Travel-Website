@@ -53,7 +53,7 @@ class FooterSection extends StatelessWidget {
              Center(
                child: Container(
                  width: 1200,
-                 padding: EdgeInsets.all(10),
+                 padding: EdgeInsets.all(20),
                  decoration: BoxDecoration(
                    color: Colors.white12, // ← Transparent background
                    borderRadius: BorderRadius.circular(4),

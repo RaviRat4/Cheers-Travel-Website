@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 class HeaderSection extends StatelessWidget {
   const HeaderSection({super.key});
 
@@ -62,27 +62,33 @@ class HeaderSection extends StatelessWidget {
                   const SizedBox(width: 8),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      SizedBox(height: 15),
-                      Text(
-                        "04 89994765",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0XFF666666),
-                          height: 0.9,
+                    children: [
+                      const SizedBox(height: 15),
+                      GestureDetector(
+                        onTap: () => launchUrl(Uri.parse("tel:0489994765")),
+                        child: const Text(
+                          "04 89994765",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0XFF666666),
+                            height: 0.9,
+                          ),
                         ),
                       ),
-                      Text(
-                        "08 70952590",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0XFF666666),
-                          height: 1,
+                      GestureDetector(
+                        onTap: () => launchUrl(Uri.parse("tel:0870952590")),
+                        child: const Text(
+                          "08 70952590",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0XFF666666),
+                            height: 1,
+                          ),
                         ),
                       ),
-                      Text(
+                      const Text(
                         "08:30 AM - 00:30 AM AEST",
                         style: TextStyle(
                           color: Colors.red,
@@ -95,7 +101,8 @@ class HeaderSection extends StatelessWidget {
                   ),
                   const SizedBox(width: 10),
                 ],
-              ),
+              )
+
             ],
           )
         ],

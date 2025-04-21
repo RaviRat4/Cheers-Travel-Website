@@ -60,7 +60,7 @@ class LuxuriousTreatmentSection extends StatelessWidget {
               Expanded(
                 child: Column(
                   children: const [
-                   /* FlightClassCard(
+                    FlightClassCard(
                       imagePath: 'assets/images/firstImgge.jpg',
                       title: 'FIRST CLASS',
                       phone: '08 70952590',
@@ -72,7 +72,7 @@ class LuxuriousTreatmentSection extends StatelessWidget {
                       title: 'PREMIUM ECONOMY',
                       phone: '08 70952590',
                       height: 245,
-                    ),*/
+                    ),
                   ],
                 ),
               ),
