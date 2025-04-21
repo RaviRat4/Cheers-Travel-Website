@@ -7,11 +7,16 @@ class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFF142957),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/footer_bg.jpg"),
+          fit: BoxFit.cover, // or BoxFit.contain, BoxFit.fill, etc.
+        ),
+      ),
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+      padding: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
      child: Center(
-       child: Container(
+       child: SizedBox(
          width: 1200,
          child: Column(
            crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,12 +61,12 @@ class FooterSection extends StatelessWidget {
                  child: Center(
                    child: Image.asset(
                      'assets/images/payment.png', // Add your image to assets folder
-                     height: 50,
+                     height: 40,
                    ),
                  ),
                ),
              ),
-             const SizedBox(height: 5),
+             const SizedBox(height: 10),
              // Partner Logos
              Center(
                child: Wrap(
@@ -75,7 +80,7 @@ class FooterSection extends StatelessWidget {
                  ],
                ),
              ),
-             const SizedBox(height: 5),
+             const SizedBox(height: 10),
              // Company Info
              const Center(
                child: Text(

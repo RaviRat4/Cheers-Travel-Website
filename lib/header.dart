@@ -16,7 +16,7 @@ class HeaderSection extends StatelessWidget {
           Row(
             children: [
               Image.asset(
-                'assets/images/cheers-logo.png', // Add your image to assets folder
+                'assets/images/cheers-logo.png',
                 width: 270,
               ),
             ],
@@ -27,13 +27,24 @@ class HeaderSection extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  navItem("Home", isActive: true),
-                  navItem("About Us"),
-                  navItem("Contact Us"),
-                  navItem("Secure Today's Price"),
-                  navItem("My Account", hasDropdown: true),
+                  navItem("Home", isActive: true, onTap: () {
+                    Navigator.pushNamed(context, '/home');
+                  }),
+                  navItem("About Us", onTap: () {
+                    Navigator.pushNamed(context, '/about');
+                  }),
+                  navItem("Contact Us", onTap: () {
+                    Navigator.pushNamed(context, '/contact');
+                  }),
+                  navItem("Secure Today's Price", onTap: () {
+                    Navigator.pushNamed(context, '/secure-price');
+                  }),
+                  navItem("My Account", hasDropdown: true, onTap: () {
+                    Navigator.pushNamed(context, '/account');
+                  }),
                 ],
               ),
+
               // Right: Phone & Time
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,16 +63,37 @@ class HeaderSection extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
-                      SizedBox(height: 15,),
-                      Text("04 89994765", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0XFF666666),height: 0.9,)),
-                      Text("08 70952590", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0XFF666666),height: 1,)),
+                      SizedBox(height: 15),
+                      Text(
+                        "04 89994765",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0XFF666666),
+                          height: 0.9,
+                        ),
+                      ),
+                      Text(
+                        "08 70952590",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0XFF666666),
+                          height: 1,
+                        ),
+                      ),
                       Text(
                         "08:30 AM - 00:30 AM AEST",
-                        style: TextStyle(color: Colors.red, fontSize: 11.5, fontWeight: FontWeight.bold, height: 0),
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 11.5,
+                          fontWeight: FontWeight.bold,
+                          height: 0,
+                        ),
                       ),
                     ],
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                 ],
               ),
             ],
@@ -71,33 +103,31 @@ class HeaderSection extends StatelessWidget {
     );
   }
 
-  Widget navItem(String title, {bool isActive = false, bool hasDropdown = false}) {
+  Widget navItem(
+      String title, {
+        bool isActive = false,
+        bool hasDropdown = false,
+        VoidCallback? onTap,
+      }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 17),
-      child: Row(
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: isActive ? FontWeight.bold : FontWeight.bold,
-              color: isActive ? Color(0XFF0c44ac) : Colors.black,
-            ),
-          ),
-          if (hasDropdown)
-            const Icon(Icons.arrow_drop_down, size: 20),
-          if (isActive)
-            const Padding(
-              padding: EdgeInsets.only(top: 18),
-              child: SizedBox(
-                height: 2,
-                width: 0,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(color: Color(0XFF0c44ac)),
-                ),
+      child: InkWell(
+        onTap: onTap,
+        child: Row(
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: isActive ? const Color(0XFF0c44ac) : Colors.black,
+                decoration: TextDecoration.none, // Or underline if needed
               ),
             ),
-        ],
+            if (hasDropdown)
+              const Icon(Icons.arrow_drop_down, size: 20),
+          ],
+        ),
       ),
     );
   }
