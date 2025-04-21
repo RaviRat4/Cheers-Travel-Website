@@ -1,6 +1,9 @@
+import 'package:cheers_travel_website/top_flight_offers.dart';
+import 'package:cheers_travel_website/travel_guides.dart';
+import 'package:cheers_travel_website/usb_section.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'economised_fares.dart';
 import 'header.dart';
 import 'footer.dart';
 import 'footer_above.dart';
@@ -47,11 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               HeaderSection(),
               FlightBookingSection(),
-              Container(
-                height: 50,
-                color: Colors.grey[200],
-                child: const Center(child: Text("Page Content")),
-              ),
+              UsbSection(),
+              TopFlightOffers(),
+              TravelGuidesSection(),
+              LuxuriousTreatmentSection(),
                HelpSection(),
               FooterSection(),
             ],
