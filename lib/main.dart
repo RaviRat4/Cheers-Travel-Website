@@ -1,13 +1,8 @@
-import 'package:cheers_travel_website/top_flight_offers.dart';
-import 'package:cheers_travel_website/travel_guides.dart';
-import 'package:cheers_travel_website/usb_section.dart';
+import 'package:cheers_travel_website/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'economised_fares.dart';
-import 'header.dart';
-import 'footer.dart';
-import 'footer_above.dart';
-import 'search_widget.dart';
+
+import 'home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,14 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              HeaderSection(),
-              FlightBookingSection(),
-              UsbSection(),
-              TopFlightOffers(),
-              TravelGuidesSection(),
-              LuxuriousTreatmentSection(),
-               HelpSection(),
-              FooterSection(),
+              /*HomePage(),*/
+              ResultPage(),
             ],
           ),
         ),
