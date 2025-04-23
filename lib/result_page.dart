@@ -1,6 +1,7 @@
+import 'package:cheers_travel_website/result_filter.dart';
+import 'package:cheers_travel_website/result_view.dart';
 import 'package:flutter/material.dart';
-
-import 'header.dart';
+import 'header_result.dart';
 import 'matrix_airline.dart';
 
 class ResultPage extends StatelessWidget {
@@ -15,13 +16,26 @@ class ResultPage extends StatelessWidget {
         child: SizedBox(
           child: Column(
             children: [
-              HeaderSection(),
+              HeaderResult(),
               SizedBox(height: 20,),
-              Container(
+              SizedBox(
                 width: 1200,
                 child: Column(
                   children: [
                     AirlineFareCard(),
+                    SizedBox(height: 34,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 300,
+                          height: 800,
+                          child: FlightFilterPanel(),
+                        ),
+                        ResultView(),
+                      ],
+                    )
                   ],
                 ),
               )

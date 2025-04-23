@@ -72,22 +72,22 @@ class AirlineFareCard extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                   child: Icon(Icons.calendar_month, size: 32, color: Colors.blue),
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 5),
                 const Text(
                   "Alternative Dates",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17,color: Color(0xff1e2020)),
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 5),
                 const Text(
                   "Save £293.10 | £455.01",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16,color: Color(0xff271b19)),
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 5),
                 const Text(
                   "Here are the cheapest Deals\nfor 6-day trips",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12,color: Color(0xff706a64)),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 8),
                 InkWell(
                   onTap: () {},
                   child: const Text(
