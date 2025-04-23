@@ -54,7 +54,7 @@ class AirlineFareCard extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Left Side: Alternative Dates
+        // Left Section: Alternative Dates
         Expanded(
           flex: 2,
           child: Container(
@@ -67,15 +67,25 @@ class AirlineFareCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Icon(Icons.calendar_month, size: 32, color: Colors.blue),
-                const SizedBox(height: 8),
+                Container(
+                  color: Color(0xffdfecff),
+                  padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                  child: Icon(Icons.calendar_month, size: 32, color: Colors.blue),
+                ),
+                const SizedBox(height: 6),
                 const Text(
                   "Alternative Dates",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17,color: Color(0xff1e2020)),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 6),
                 const Text(
-                  "Save £293.10 | £455.01\nHere are the cheapest Deals for 6-day trips",
+                  "Save £293.10 | £455.01",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16,color: Color(0xff271b19)),
+                ),
+                const SizedBox(height: 6),
+                const Text(
+                  "Here are the cheapest Deals\nfor 6-day trips",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12,color: Color(0xff706a64)),
                 ),
                 const SizedBox(height: 12),
                 InkWell(
@@ -83,8 +93,9 @@ class AirlineFareCard extends StatelessWidget {
                   child: const Text(
                     "View Alternative Dates",
                     style: TextStyle(
-                      color: Colors.blue,
+                      color: Color(0xff0c44ac),
                       decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 )
@@ -93,78 +104,115 @@ class AirlineFareCard extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 12),
-        // Right Side: Best Fares Carousel
+        // Right Section: Carousel + Text
         Expanded(
-          flex: 5,
+          flex: 7,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.only(top: 12, bottom: 0),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(color: Colors.grey.shade300),
+                  border: Border(
+                    right: BorderSide(color: Colors.grey.shade300),
+                  ),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Best Fare by Airlines Book Today",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    Padding(
+                        padding: EdgeInsets.only(left: 16, top: 4),
+                      child: const Text(
+                        "Best Fare by Airlines Book Today",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
                     ),
                     const SizedBox(height: 12),
-                    CarouselSlider(
-                      options: CarouselOptions(
-                        height: 180,
-                        autoPlay: true,
-                        enableInfiniteScroll: true,
-                        viewportFraction: 1 / 6, // 6 cards per screen width
-                        disableCenter: true,
-                        padEnds: false,
-                      ),
-                      items: airlines.map((airline) {
-                        return Builder(
-                          builder: (BuildContext context) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                border: const Border(
-                                  top: BorderSide(color: Color(0XFFd8d8d8), width: 0.5),
-                                  right: BorderSide(color: Color(0XFFd8d8d8), width: 0.5),
-                                ),
-                                borderRadius: BorderRadius.circular(0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 40,
-                                      child: Image.asset(
-                                        airline['image']!,
-                                        fit: BoxFit.contain,
-                                      ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                         Container(
+                           width: 140,
+                          padding: EdgeInsets.only(top: 18, bottom: 16),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: const Color(0XFFd8d8d8), width: 0.5),
+                          ),
+                           child: Column(
+                             children: [
+                               Text(
+                                 "Show All Fares",
+                                 style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                               ),
+                               const SizedBox(height: 4),
+                               const Divider(color: Color(0xFFd8d8d8), thickness: 0.5),
+                               const SizedBox(height: 6),
+                               Text(
+                                 "Non Stop:",
+                                 style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                               ),
+                               const SizedBox(height: 6),
+                               const Divider(color: Color(0xFFd8d8d8), thickness: 0.5),
+                               const SizedBox(height: 6),
+                               Text(
+                                 "1+ Stop: ",
+                                 style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                               ),
+                             ],
+                           ),
+                        ),
+                        Expanded(
+                          child: CarouselSlider(
+                            options: CarouselOptions(
+                              height: 146,
+                              autoPlay: false,
+                              enableInfiniteScroll: true,
+                              viewportFraction: 1 / 6,
+                              disableCenter: true,
+                              padEnds: false,
+                            ),
+                            items: airlines.map((airline) {
+                              return Builder(
+                                builder: (BuildContext context) {
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: const Color(0XFFd8d8d8), width: 0.5),
                                     ),
-                                    const SizedBox(height: 6),
-                                    Text(
-                                      airline['name']!,
-                                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 11),
-                                      textAlign: TextAlign.center,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
+                                    padding: const EdgeInsets.only(top: 10,),
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height: 25,
+                                          child: Image.asset(
+                                            airline['image']!,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 6),
+                                        const Divider(color: Color(0xFFd8d8d8), thickness: 0.5),
+                                        const SizedBox(height: 6),
+                                        Text(
+                                          "${airline['nonStop']}",
+                                          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                        ),
+                                        const SizedBox(height: 6),
+                                        const Divider(color: Color(0xFFd8d8d8), thickness: 0.5),
+                                        const SizedBox(height: 6),
+                                        Text(
+                                          "${airline['oneStop']}",
+                                          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
                                     ),
-                                    const SizedBox(height: 4),
-                                    Text("Non Stop: ${airline['nonStop']}", style: const TextStyle(fontSize: 10)),
-                                    Text("1+ Stop: ${airline['oneStop']}", style: const TextStyle(fontSize: 10)),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        );
-                      }).toList(),
+                                  );
+                                },
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ],
                     ),
-
                   ],
                 ),
               ),
