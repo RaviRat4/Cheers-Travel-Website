@@ -23,7 +23,7 @@ class ResultPage extends StatelessWidget {
                 child: Column(
                   children: [
                     AirlineFareCard(),
-                    SizedBox(height: 34,),
+                    SizedBox(height: 15,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,6 +33,7 @@ class ResultPage extends StatelessWidget {
                           height: 800,
                           child: FlightFilterPanel(),
                         ),
+                        SizedBox(width: 20,),
                         ResultView(),
                       ],
                     )
