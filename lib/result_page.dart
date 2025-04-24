@@ -1,6 +1,7 @@
 import 'package:cheers_travel_website/result_filter.dart';
 import 'package:cheers_travel_website/result_view.dart';
 import 'package:flutter/material.dart';
+import 'footer_inner_page.dart';
 import 'header_result.dart';
 import 'matrix_airline.dart';
 
@@ -39,7 +40,8 @@ class ResultPage extends StatelessWidget {
                     )
                   ],
                 ),
-              )
+              ),
+              FooterInnerPage(),
             ],
           ),
         ),
